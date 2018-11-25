@@ -5,15 +5,22 @@ function guessinggame {
   count=$(ls -al | grep ^[-] | wc -l)
   echo "How many files would you guess are in the current directory? Type a guess and hit Enter:"
   read guess
-  while [[ $guess -ne $count ]]
+  while [[ $guess != $count ]]
   do
-    if [[ $guess -lt $count ]]
+    if [[ $guess =~ ^[0-9]+$ ]]  # conditional to accept whole number user inputs only
     then
-      echo "That is too low. Guess again:"
-      read next_guess
-      guess=$next_guess
+      if [[ $guess -lt $count ]]
+      then
+        echo "That is too low. Guess again:"
+        read next_guess
+        guess=$next_guess
+      else
+        echo "That is too high. Guess again:"
+        read next_guess
+        guess=$next_guess
+      fi
     else
-      echo "That is too high. Guess again:"
+      echo "Invalid input. Try again:"
       read next_guess
       guess=$next_guess
     fi
@@ -21,4 +28,4 @@ function guessinggame {
   echo "Congratulations! You guessed right."
 }
 
-guessinggame   # call function guessingame to run
+guessinggame   # calls function guessingame to run
