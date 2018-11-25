@@ -6,3 +6,14 @@ echo "How many files would you guess are in the current directoy? Type a guess a
 read guess
 while [[ $guess -ne $count ]]
 do
+  if [[ $guess -lt $count ]]
+  then
+    echo "That is too low. Guess again:"
+    read next_guess
+    guess=$next_guess
+  else
+    echo "That is too high. Guess again:"
+    read next_guess
+    guess=$next_guess
+  fi
+done
