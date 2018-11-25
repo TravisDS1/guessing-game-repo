@@ -17,3 +17,4 @@ do
     guess=$next_guess
   fi
 done
+echo "Congratulations! You guessed right."
