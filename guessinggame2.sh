@@ -2,7 +2,7 @@
 # File: guessinggame.sh
 
 function guessinggame {
-  let count=$(ls -al | wc -l)-3
+  count=$(ls -al | grep ^[-] | wc -l)
   echo "How many files would you guess are in the current directory? Type a guess and hit Enter:"
   read guess
   while [[ $guess != $count ]]
